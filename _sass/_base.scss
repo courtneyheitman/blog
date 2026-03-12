@@ -118,14 +118,14 @@ img, video {
 }
 
 a {
-  color: var(--color-sapphire);
+  color: var(--color-orchid);
   text-decoration: underline;
   text-underline-offset: 3px;
   transition: color 0.2s ease;
 }
 
 a:hover {
-  color: var(--color-orchid);
+  color: var(--color-sapphire);
 }
 
 ul, ol {
@@ -152,7 +152,7 @@ h1 {
   font-size: var(--text-subtitle);
   font-weight: var(--weight-regular);
   line-height: var(--leading-snug);
-  color: var(--color-text-muted);
+  color: var(--color-text);
 }
 
 .heading,

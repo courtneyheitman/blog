@@ -1,0 +1,44 @@
+/* ------------------------------------------------------------
+   TO READ PAGE
+   ------------------------------------------------------------ */
+
+.tbr-entry {
+  padding-block: var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  h3 {
+    font-size: var(--text-subheading);
+    margin-bottom: var(--space-1);
+
+    a {
+      text-decoration: none;
+      color: var(--color-midnight);
+
+      &:hover {
+        color: var(--color-orchid);
+      }
+    }
+  }
+
+  p {
+    margin-top: var(--space-2);
+  }
+}
+
+.tbr-author {
+  font-size: var(--text-caption);
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+
+  span {
+    font-weight: var(--weight-regular);
+    text-transform: none;
+    letter-spacing: 0;
+  }
+}

@@ -40,8 +40,8 @@
    ------------------------------------------------------------ */
 
 .site-header {
-  background-color: var(--color-bg);
-  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-mist);
+  border-bottom: 2px solid var(--color-mist);
   padding-block: var(--space-4);
   position: sticky;
   top: 0;
@@ -74,7 +74,7 @@
   a {
     font-size: var(--text-body);
     font-weight: var(--weight-medium);
-    color: var(--color-sapphire);
+    color: var(--color-midnight);
     text-decoration: none;
 
     &:hover {
@@ -94,14 +94,51 @@
    ------------------------------------------------------------ */
 
 .site-footer {
+  background-color: var(--color-mist);
   border-top: 1px solid var(--color-border);
   padding-block: var(--space-8);
   margin-top: var(--space-24);
 
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   p {
     font-size: var(--text-caption);
-    color: var(--color-text-muted);
+    color: var(--color-text);
   }
+}
+
+.linkedin-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  text-decoration: none;
+  color: var(--color-text-muted);
+  font-size: var(--text-caption);
+
+  &:hover {
+    color: var(--color-midnight);
+  }
+}
+
+.linkedin-icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.linkedin-label {
+  font-weight: var(--weight-medium);
+}
+
+.linkedin-reg {
+  font-size: 0.55rem;
+  line-height: 1;
+  align-self: flex-end;
+  margin-bottom: 2px;
 }
 
 
@@ -169,7 +206,7 @@
 
   .subtitle {
     font-size: var(--text-section);
-    color: var(--color-text-muted);
+    color: var(--color-text);
   }
 }
 
@@ -182,7 +219,7 @@
     font-weight: var(--weight-bold);
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--color-text-muted);
+    color: var(--color-accent);
     margin-bottom: var(--space-6);
     border-bottom: none;
   }
@@ -513,5 +550,5 @@
 .chapter-nav__title {
   font-size: var(--text-body);
   font-weight: var(--weight-medium);
-  color: var(--color-sapphire);
+  color: var(--color-orchid);
 }
