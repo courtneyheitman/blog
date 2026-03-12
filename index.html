@@ -7,6 +7,7 @@ description: "Book notes from my professional reading list."
 {% assign reading   = site.books | where: "status", "reading"   | sort: "started" | reverse %}
 {% assign completed = site.books | where: "status", "completed" | sort: "title" %}
 {% assign queued    = site.books | where: "status", "queued"    | sort: "title" %}
+{% assign active    = reading | concat: queued %}
 
 <div class="container">
 
@@ -15,11 +16,11 @@ description: "Book notes from my professional reading list."
     <p class="subtitle">Notes from books I'm reading for my professional career.</p>
   </header>
 
-  {% if reading.size > 0 %}
-    <section class="library-section" aria-label="Currently reading">
-      <h2>Currently Reading</h2>
+  {% if active.size > 0 %}
+    <section class="library-section" aria-label="Currently reading and to be read">
+      <h2>Now &amp; Next</h2>
       <div class="library-grid">
-        {% for book in reading %}
+        {% for book in active %}
           {% include book-card.html book=book %}
         {% endfor %}
       </div>
@@ -27,21 +28,10 @@ description: "Book notes from my professional reading list."
   {% endif %}
 
   {% if completed.size > 0 %}
-    <section class="library-section" aria-label="Completed books">
-      <h2>Completed</h2>
+    <section class="library-section" aria-label="Past reads">
+      <h2>Past Reads</h2>
       <div class="library-grid">
         {% for book in completed %}
-          {% include book-card.html book=book %}
-        {% endfor %}
-      </div>
-    </section>
-  {% endif %}
-
-  {% if queued.size > 0 %}
-    <section class="library-section" aria-label="Up next">
-      <h2>Up Next</h2>
-      <div class="library-grid">
-        {% for book in queued %}
           {% include book-card.html book=book %}
         {% endfor %}
       </div>
