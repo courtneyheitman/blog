@@ -1,0 +1,53 @@
+---
+layout: default
+---
+
+{% assign book_chapters = site.chapters | where: "book", page.slug | sort: "chapter" %}
+
+<div class="container">
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="{{ '/' | relative_url }}">Reading List</a>
+    <span aria-hidden="true">/</span>
+    <span aria-current="page">{{ page.title }}</span>
+  </nav>
+
+  <div class="book-hero">
+    <div class="book-hero__cover">
+      {% if page.cover %}
+        <img src="{{ page.cover | relative_url }}" alt="{{ page.title }} cover" />
+      {% else %}
+        <div class="book-cover-placeholder">
+          <span>{{ page.title }}</span>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="book-hero__meta">
+      <span class="tag tag--{{ page.status }}">{{ page.status | capitalize }}</span>
+      <h1>{{ page.title }}</h1>
+      <p class="book-author">{{ page.author }}</p>
+      {% if page.genre %}<p class="book-genre">{{ page.genre | capitalize }}</p>{% endif %}
+      {% if page.description %}<p class="book-description">{{ page.description }}</p>{% endif %}
+    </div>
+  </div>
+
+  <section class="chapter-list">
+    <h2>Chapter Notes</h2>
+    {% if book_chapters.size > 0 %}
+      <ol class="chapter-list__items">
+        {% for chapter in book_chapters %}
+          <li class="chapter-list__item">
+            <a href="{{ chapter.url | relative_url }}">
+              <span class="chapter-num">Ch. {{ chapter.chapter }}</span>
+              <span class="chapter-title">{{ chapter.title }}</span>
+            </a>
+          </li>
+        {% endfor %}
+      </ol>
+    {% else %}
+      <p class="text-muted">No chapter notes yet — check back soon.</p>
+    {% endif %}
+  </section>
+
+</div>

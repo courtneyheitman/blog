@@ -1,0 +1,16 @@
+<a class="book-card" href="{{ include.book.url | relative_url }}">
+  <div class="book-card__cover">
+    {% if include.book.cover %}
+      <img src="{{ include.book.cover | relative_url }}" alt="{{ include.book.title }} cover" loading="lazy" />
+    {% else %}
+      <div class="book-cover-placeholder" aria-hidden="true">
+        <span>{{ include.book.title }}</span>
+      </div>
+    {% endif %}
+    <span class="tag tag--{{ include.book.status }}">{{ include.book.status | capitalize }}</span>
+  </div>
+  <div class="book-card__meta">
+    <p class="book-card__title">{{ include.book.title }}</p>
+    <p class="book-card__author">{{ include.book.author }}</p>
+  </div>
+</a>

@@ -1,0 +1,11 @@
+<header class="site-header">
+  <div class="container">
+    <a href="{{ '/' | relative_url }}" class="site-header__logo" aria-label="{{ site.title }} home">
+      Reading Notes
+    </a>
+    <nav class="site-header__nav" aria-label="Site navigation">
+      <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Library</a>
+      <a href="https://courtneyheitman.com" target="_blank" rel="noopener noreferrer">courtneyheitman.com</a>
+    </nav>
+  </div>
+</header>

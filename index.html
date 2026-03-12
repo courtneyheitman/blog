@@ -1,0 +1,55 @@
+---
+layout: default
+title: "Reading List"
+description: "Book notes from my professional reading list."
+---
+
+{% assign reading   = site.books | where: "status", "reading"   | sort: "started" | reverse %}
+{% assign completed = site.books | where: "status", "completed" | sort: "title" %}
+{% assign queued    = site.books | where: "status", "queued"    | sort: "title" %}
+
+<div class="container">
+
+  <header class="library-header">
+    <h1>Reading Notes</h1>
+    <p class="subtitle">Notes from books I'm reading for my professional career.</p>
+  </header>
+
+  {% if reading.size > 0 %}
+    <section class="library-section" aria-label="Currently reading">
+      <h2>Currently Reading</h2>
+      <div class="library-grid">
+        {% for book in reading %}
+          {% include book-card.html book=book %}
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+
+  {% if completed.size > 0 %}
+    <section class="library-section" aria-label="Completed books">
+      <h2>Completed</h2>
+      <div class="library-grid">
+        {% for book in completed %}
+          {% include book-card.html book=book %}
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+
+  {% if queued.size > 0 %}
+    <section class="library-section" aria-label="Up next">
+      <h2>Up Next</h2>
+      <div class="library-grid">
+        {% for book in queued %}
+          {% include book-card.html book=book %}
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+
+  {% if site.books.size == 0 %}
+    <p class="text-muted" style="padding-top: var(--space-8);">No books added yet — check back soon.</p>
+  {% endif %}
+
+</div>

@@ -1,0 +1,45 @@
+title: "Reading Notes"
+description: "Book notes from my professional reading — by Courtney Heitman"
+url: "https://blog.courtneyheitman.com"
+baseurl: ""
+author: "Courtney Heitman"
+
+# Collections
+collections:
+  books:
+    output: true
+    permalink: /:slug/
+  chapters:
+    output: true
+    permalink: /:path/
+
+# Default layouts per collection
+defaults:
+  - scope:
+      path: ""
+      type: "books"
+    values:
+      layout: "book"
+  - scope:
+      path: ""
+      type: "chapters"
+    values:
+      layout: "chapter"
+
+# GitHub Pages-safe plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Markdown
+markdown: kramdown
+kramdown:
+  input: GFM
+
+# Build exclusions
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - "*.sh"

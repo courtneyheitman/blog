@@ -1,0 +1,69 @@
+---
+layout: default
+---
+
+{% assign book = site.books | where: "slug", page.book | first %}
+{% assign all_chapters = site.chapters | where: "book", page.book | sort: "chapter" %}
+
+{% assign prev_chapter = nil %}
+{% assign next_chapter = nil %}
+{% for chapter in all_chapters %}
+  {% if chapter.url == page.url %}
+    {% unless forloop.first %}
+      {% assign prev_idx = forloop.index0 | minus: 1 %}
+      {% assign prev_chapter = all_chapters[prev_idx] %}
+    {% endunless %}
+    {% unless forloop.last %}
+      {% assign next_idx = forloop.index0 | plus: 1 %}
+      {% assign next_chapter = all_chapters[next_idx] %}
+    {% endunless %}
+  {% endif %}
+{% endfor %}
+
+<div class="container container--text">
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="{{ '/' | relative_url }}">Reading List</a>
+    <span aria-hidden="true">/</span>
+    {% if book %}
+      <a href="{{ book.url | relative_url }}">{{ book.title }}</a>
+    {% else %}
+      <span>{{ page.book }}</span>
+    {% endif %}
+    <span aria-hidden="true">/</span>
+    <span aria-current="page">Ch. {{ page.chapter }}</span>
+  </nav>
+
+  <article class="chapter-content">
+    <header class="chapter-header">
+      <p class="chapter-meta">
+        {% if book %}<a href="{{ book.url | relative_url }}">{{ book.title }}</a> &middot; {% endif %}Chapter {{ page.chapter }}
+      </p>
+      <h1>{{ page.title }}</h1>
+    </header>
+
+    <div class="chapter-body">
+      {{ content }}
+    </div>
+  </article>
+
+  <nav class="chapter-nav" aria-label="Chapter navigation">
+    <div class="chapter-nav__prev">
+      {% if prev_chapter %}
+        <a href="{{ prev_chapter.url | relative_url }}" rel="prev">
+          <span class="chapter-nav__label">&larr; Previous</span>
+          <span class="chapter-nav__title">Ch. {{ prev_chapter.chapter }}: {{ prev_chapter.title }}</span>
+        </a>
+      {% endif %}
+    </div>
+    <div class="chapter-nav__next">
+      {% if next_chapter %}
+        <a href="{{ next_chapter.url | relative_url }}" rel="next">
+          <span class="chapter-nav__label">Next &rarr;</span>
+          <span class="chapter-nav__title">Ch. {{ next_chapter.chapter }}: {{ next_chapter.title }}</span>
+        </a>
+      {% endif %}
+    </div>
+  </nav>
+
+</div>
